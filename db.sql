@@ -107,6 +107,8 @@ CREATE TABLE [dbo].[tEfficacy](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+/****** Object:  討論區主表 ******/
 /****** Object:  Table [dbo].[tForum]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
@@ -132,6 +134,8 @@ CREATE TABLE [dbo].[tForum](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
+
+/****** Object:  討論區數據表 ******/
 /****** Object:  Table [dbo].[tForumAnalysis]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
@@ -149,6 +153,8 @@ CREATE TABLE [dbo].[tForumAnalysis](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+/****** Object:  討論區權限表 ******/
 /****** Object:  Table [dbo].[tForumAuth]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
@@ -165,6 +171,8 @@ CREATE TABLE [dbo].[tForumAuth](
 	[fAuthDeleteReplyFlag] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
+
+/****** Object:  討論區回覆表 ******/
 /****** Object:  Table [dbo].[tForumReply]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
@@ -187,6 +195,8 @@ CREATE TABLE [dbo].[tForumReply](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
+
+/****** Object:  討論區回覆分析表 ******/
 /****** Object:  Table [dbo].[tForumReplyAnalysis]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
@@ -498,6 +508,8 @@ CREATE TABLE [dbo].[tUserProfile](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
+
+/****** table關聯設定 ******/
 ALTER TABLE [dbo].[tForum]  WITH CHECK ADD  CONSTRAINT [FK_tForum_tUserProfile] FOREIGN KEY([fUserId])
 REFERENCES [dbo].[tUserProfile] ([fUserId])
 GO
