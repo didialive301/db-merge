@@ -168,7 +168,11 @@ CREATE TABLE [dbo].[tForumAuth](
 	[fAuthUpdatePostFlag] [nvarchar](50) NULL,
 	[fAuthUpdateReplyFlag] [nvarchar](50) NULL,
 	[fAuthDeletePostFlag] [nvarchar](50) NULL,
-	[fAuthDeleteReplyFlag] [nvarchar](50) NULL
+	[fAuthDeleteReplyFlag] [nvarchar](50) NULL,
+ CONSTRAINT [PK_tForumAuth] PRIMARY KEY CLUSTERED 
+(
+	[fUserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
