@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [dbShoppingForum]    Script Date: 2020/1/30 下午 03:34:32 ******/
+/****** Object:  Database [dbShoppingForum]    Script Date: 2020/1/30 下午 04:20:43 ******/
 CREATE DATABASE [dbShoppingForum]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -79,7 +79,7 @@ ALTER DATABASE [dbShoppingForum] SET QUERY_STORE = OFF
 GO
 USE [dbShoppingForum]
 GO
-/****** Object:  Table [dbo].[tCategory]    Script Date: 2020/1/30 下午 03:34:32 ******/
+/****** Object:  Table [dbo].[tCategory]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -93,7 +93,7 @@ CREATE TABLE [dbo].[tCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tEfficacy]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tEfficacy]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,21 +107,21 @@ CREATE TABLE [dbo].[tEfficacy](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tForum]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tForum]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tForum](
 	[fPostId] [int] IDENTITY(1,1) NOT NULL,
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fPostTitle] [nvarchar](50) NOT NULL,
 	[fPostContent] [nvarchar](max) NOT NULL,
 	[fIsPost] [bit] NOT NULL,
 	[fCreaTime] [datetime] NOT NULL,
 	[fUpdateTime] [datetime] NOT NULL,
 	[fEnableFlag] [bit] NOT NULL,
-	[fEnableUserId] [nvarchar](50) NULL,
+	[fEnableUserId] [nvarchar](20) NULL,
 	[fDisableTime] [datetime] NULL,
 	[fTopSeq] [int] NOT NULL,
 	[fTotalViewCount] [int] NOT NULL,
@@ -132,14 +132,14 @@ CREATE TABLE [dbo].[tForum](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tForumAnalysis]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tForumAnalysis]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tForumAnalysis](
 	[fPostId] [int] NOT NULL,
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fLikeHate] [bit] NULL,
 	[fShareCount] [int] NOT NULL,
  CONSTRAINT [PK_tForumAnalysis] PRIMARY KEY CLUSTERED 
@@ -149,13 +149,13 @@ CREATE TABLE [dbo].[tForumAnalysis](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tForumAuth]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tForumAuth]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tForumAuth](
-	[fAccountId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fAuthBlackList] [nvarchar](50) NULL,
 	[fAuthPostFlag] [nvarchar](50) NULL,
 	[fAuthReplyFlag] [nvarchar](50) NULL,
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[tForumAuth](
 	[fAuthDeleteReplyFlag] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tForumReply]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tForumReply]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -175,10 +175,10 @@ CREATE TABLE [dbo].[tForumReply](
 	[fReplyId] [nvarchar](50) NOT NULL,
 	[fReplyTargetId] [nvarchar](50) NOT NULL,
 	[fReplySeqNo] [int] NOT NULL,
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fReplyTime] [datetime] NOT NULL,
 	[fEnableFlag] [bit] NOT NULL,
-	[fDeleteUserId] [nvarchar](50) NULL,
+	[fDeleteUserId] [nvarchar](20) NULL,
 	[fContent] [nvarchar](max) NOT NULL,
  CONSTRAINT [PK_tForumReply] PRIMARY KEY CLUSTERED 
 (
@@ -187,7 +187,7 @@ CREATE TABLE [dbo].[tForumReply](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tForumReplyAnalysis]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tForumReplyAnalysis]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -195,7 +195,7 @@ GO
 CREATE TABLE [dbo].[tForumReplyAnalysis](
 	[fPostId] [int] NOT NULL,
 	[fReplyId] [nvarchar](50) NOT NULL,
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fLikeHate] [bit] NOT NULL,
  CONSTRAINT [PK_tForumReplyAnalysis] PRIMARY KEY CLUSTERED 
 (
@@ -204,7 +204,7 @@ CREATE TABLE [dbo].[tForumReplyAnalysis](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tNote]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tNote]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -218,7 +218,51 @@ CREATE TABLE [dbo].[tNote](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tPart]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tOrder]    Script Date: 2020/1/30 下午 04:20:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tOrder](
+	[fOrderId] [bigint] NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
+	[fOrderDate] [datetimeoffset](7) NOT NULL,
+	[fShippedDate] [datetimeoffset](7) NULL,
+	[fRequiredDate] [datetimeoffset](7) NULL,
+	[fScore] [int] NULL,
+	[fOrderCheck] [bit] NULL,
+	[fConsigneeName] [nchar](10) NULL,
+	[fConsigneeTelephone] [nvarchar](50) NULL,
+	[fConsigneeCellPhone] [nvarchar](50) NULL,
+	[fConsigneeAddress] [nvarchar](50) NULL,
+	[fOrderCompanyTitle] [nvarchar](50) NULL,
+	[fOrderTaxIdDNumber] [int] NULL,
+	[fOrderPostScript] [nvarchar](50) NULL,
+ CONSTRAINT [PK_tOrder] PRIMARY KEY CLUSTERED 
+(
+	[fOrderId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tOrderDetail]    Script Date: 2020/1/30 下午 04:20:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tOrderDetail](
+	[fOrderDetailId] [int] IDENTITY(1,1) NOT NULL,
+	[fOrderId] [bigint] NOT NULL,
+	[fProductId] [int] NOT NULL,
+	[fOrderQuantity] [int] NULL,
+	[fPayment] [nvarchar](50) NULL,
+	[fOrderDetailCheck] [bit] NULL,
+ CONSTRAINT [PK_tOrderDetail] PRIMARY KEY CLUSTERED 
+(
+	[fOrderDetailId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tPart]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -232,7 +276,7 @@ CREATE TABLE [dbo].[tPart](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tProdEfficacyRelation]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tProdEfficacyRelation]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -247,7 +291,7 @@ CREATE TABLE [dbo].[tProdEfficacyRelation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tProduct]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tProduct]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -271,7 +315,7 @@ CREATE TABLE [dbo].[tProduct](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tProductImage]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tProductImage]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -287,7 +331,7 @@ CREATE TABLE [dbo].[tProductImage](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tQuestion]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tQuestion]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -308,13 +352,13 @@ CREATE TABLE [dbo].[tQuestion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tScore]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tScore]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tScore](
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fScore] [int] NULL,
 	[fActiveScore] [int] NULL,
 	[fQuestionScore] [int] NULL,
@@ -326,14 +370,46 @@ CREATE TABLE [dbo].[tScore](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tTest]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tShoppingCart]    Script Date: 2020/1/30 下午 04:20:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tShoppingCart](
+	[fBasketId] [int] NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
+	[fProductID] [int] NOT NULL,
+	[fQuantity] [smallint] NOT NULL,
+	[fAddTime] [datetime] NOT NULL,
+	[fStatus] [int] NOT NULL,
+ CONSTRAINT [PK_tShoppingCart] PRIMARY KEY CLUSTERED 
+(
+	[fBasketId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tShoppingStatus]    Script Date: 2020/1/30 下午 04:20:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tShoppingStatus](
+	[fStatus] [int] IDENTITY(1,1) NOT NULL,
+	[fStatusName] [nvarchar](20) NOT NULL,
+ CONSTRAINT [PK_tShoppingStatus] PRIMARY KEY CLUSTERED 
+(
+	[fStatus] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tTest]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tTest](
 	[fTestId] [int] IDENTITY(1,1) NOT NULL,
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fQuestionId] [int] NOT NULL,
 	[fTestStar] [datetime] NULL,
 	[fTestEnd] [datetime] NULL,
@@ -348,13 +424,13 @@ CREATE TABLE [dbo].[tTest](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tUser]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tUser]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tUser](
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fPassword] [nvarchar](50) NOT NULL,
 	[fPasswordSalt] [nvarchar](max) NOT NULL,
 	[fChkNum] [nvarchar](50) NOT NULL,
@@ -367,13 +443,13 @@ CREATE TABLE [dbo].[tUser](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tUserAuth]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tUserAuth]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tUserAuth](
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fAuth] [nvarchar](50) NOT NULL,
 	[fAuthPost] [bit] NOT NULL,
 	[fAuthReply] [bit] NOT NULL,
@@ -383,13 +459,13 @@ CREATE TABLE [dbo].[tUserAuth](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tUserFavorite]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tUserFavorite]    Script Date: 2020/1/30 下午 04:20:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tUserFavorite](
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fPostId] [int] NOT NULL,
 	[fAuthBlackList] [nvarchar](50) NULL,
  CONSTRAINT [PK_tUserFavorite] PRIMARY KEY CLUSTERED 
@@ -398,13 +474,13 @@ CREATE TABLE [dbo].[tUserFavorite](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tUserProfile]    Script Date: 2020/1/30 下午 03:34:33 ******/
+/****** Object:  Table [dbo].[tUserProfile]    Script Date: 2020/1/30 下午 04:20:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tUserProfile](
-	[fUserId] [nvarchar](50) NOT NULL,
+	[fUserId] [nvarchar](20) NOT NULL,
 	[fName] [nvarchar](50) NOT NULL,
 	[fGender] [nvarchar](50) NULL,
 	[fBirthday] [datetimeoffset](7) NOT NULL,
@@ -442,7 +518,7 @@ REFERENCES [dbo].[tUserProfile] ([fUserId])
 GO
 ALTER TABLE [dbo].[tForumAnalysis] CHECK CONSTRAINT [FK_tForumAnalysis_tUserProfile]
 GO
-ALTER TABLE [dbo].[tForumAuth]  WITH CHECK ADD  CONSTRAINT [FK_tForumAuth_tUserProfile] FOREIGN KEY([fAccountId])
+ALTER TABLE [dbo].[tForumAuth]  WITH CHECK ADD  CONSTRAINT [FK_tForumAuth_tUserProfile] FOREIGN KEY([fUserId])
 REFERENCES [dbo].[tUserProfile] ([fUserId])
 GO
 ALTER TABLE [dbo].[tForumAuth] CHECK CONSTRAINT [FK_tForumAuth_tUserProfile]
@@ -471,6 +547,21 @@ ALTER TABLE [dbo].[tForumReplyAnalysis]  WITH CHECK ADD  CONSTRAINT [FK_tForumRe
 REFERENCES [dbo].[tUserProfile] ([fUserId])
 GO
 ALTER TABLE [dbo].[tForumReplyAnalysis] CHECK CONSTRAINT [FK_tForumReplyAnalysis_tUserProfile]
+GO
+ALTER TABLE [dbo].[tOrder]  WITH CHECK ADD  CONSTRAINT [FK_tOrder_tUser] FOREIGN KEY([fUserId])
+REFERENCES [dbo].[tUserProfile] ([fUserId])
+GO
+ALTER TABLE [dbo].[tOrder] CHECK CONSTRAINT [FK_tOrder_tUser]
+GO
+ALTER TABLE [dbo].[tOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_tOrderDetail_tOrder] FOREIGN KEY([fOrderId])
+REFERENCES [dbo].[tOrder] ([fOrderId])
+GO
+ALTER TABLE [dbo].[tOrderDetail] CHECK CONSTRAINT [FK_tOrderDetail_tOrder]
+GO
+ALTER TABLE [dbo].[tOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_tOrderDetail_tProduct] FOREIGN KEY([fProductId])
+REFERENCES [dbo].[tProduct] ([fProductID])
+GO
+ALTER TABLE [dbo].[tOrderDetail] CHECK CONSTRAINT [FK_tOrderDetail_tProduct]
 GO
 ALTER TABLE [dbo].[tProdEfficacyRelation]  WITH CHECK ADD  CONSTRAINT [FK_tProdEfficacyRelation_tEffcacy] FOREIGN KEY([fEfficacyID])
 REFERENCES [dbo].[tEfficacy] ([fEfficacyID])
@@ -506,6 +597,21 @@ ALTER TABLE [dbo].[tScore]  WITH CHECK ADD  CONSTRAINT [FK_tScore_tUserProfile] 
 REFERENCES [dbo].[tUserProfile] ([fUserId])
 GO
 ALTER TABLE [dbo].[tScore] CHECK CONSTRAINT [FK_tScore_tUserProfile]
+GO
+ALTER TABLE [dbo].[tShoppingCart]  WITH CHECK ADD  CONSTRAINT [FK_tShoppingCart_tProduct] FOREIGN KEY([fProductID])
+REFERENCES [dbo].[tProduct] ([fProductID])
+GO
+ALTER TABLE [dbo].[tShoppingCart] CHECK CONSTRAINT [FK_tShoppingCart_tProduct]
+GO
+ALTER TABLE [dbo].[tShoppingCart]  WITH CHECK ADD  CONSTRAINT [FK_tShoppingCart_tShoppingStatus] FOREIGN KEY([fStatus])
+REFERENCES [dbo].[tShoppingStatus] ([fStatus])
+GO
+ALTER TABLE [dbo].[tShoppingCart] CHECK CONSTRAINT [FK_tShoppingCart_tShoppingStatus]
+GO
+ALTER TABLE [dbo].[tShoppingCart]  WITH CHECK ADD  CONSTRAINT [FK_tShoppingCart_tUserProfile] FOREIGN KEY([fUserId])
+REFERENCES [dbo].[tUserProfile] ([fUserId])
+GO
+ALTER TABLE [dbo].[tShoppingCart] CHECK CONSTRAINT [FK_tShoppingCart_tUserProfile]
 GO
 ALTER TABLE [dbo].[tTest]  WITH CHECK ADD  CONSTRAINT [FK_tTest_fQuestionId] FOREIGN KEY([fQuestionId])
 REFERENCES [dbo].[tQuestion] ([fQuestionId])
