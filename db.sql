@@ -1,5 +1,5 @@
 /****** [USE]不用填寫 ******/
-USE [******]
+USE [dbShoppingForum]
 GO
 
 /****** Object:  討論區主表 ******/
