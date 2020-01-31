@@ -232,6 +232,8 @@ CREATE TABLE [dbo].[tNote](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+/****** Object:  訂單主表 ******/
 /****** Object:  Table [dbo].[tOrder]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
@@ -258,6 +260,8 @@ CREATE TABLE [dbo].[tOrder](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+/****** Object:  訂單明細表 ******/
 /****** Object:  Table [dbo].[tOrderDetail]    Script Date: 2020/1/30 下午 04:20:43 ******/
 SET ANSI_NULLS ON
 GO
