@@ -481,7 +481,6 @@ GO
 CREATE TABLE [dbo].[tUserFavorite](
 	[fUserId] [nvarchar](20) NOT NULL,
 	[fPostId] [int] NOT NULL,
-	[fAuthBlackList] [nvarchar](50) NULL,
  CONSTRAINT [PK_tUserFavorite] PRIMARY KEY CLUSTERED 
 (
 	[fUserId] ASC
